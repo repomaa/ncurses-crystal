@@ -28,6 +28,12 @@ module NCurses
 
   NCURSES_ATTR_SHIFT = 8
 
+  enum Cursor
+    INVISIBLE = 0
+    VISIBLE   = 1
+    HI_VIZ    = 2
+  end
+
   class Window
     def initialize(@window : LibNCurses::Window)
     end
@@ -117,6 +123,14 @@ module NCurses
 
   def can_change_color?
     LibNCurses.can_change_color
+  end
+
+  def color_pairs
+    LibNCurses.color_pairs
+  end
+
+  def colors
+    LibNCurses.colors
   end
 
   def start_color
