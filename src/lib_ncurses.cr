@@ -68,7 +68,7 @@ lib LibNCurses
   fun notimeout(window : Window, value : Bool)
   fun nodelay(window : Window, value : Bool)
   fun wclear(window : Window)
-  fun wbkgd(window : Window, slot : Int16)
+  fun wbkgd(window : Window, slot : Int32)
   fun newwin(height : Int32, width : Int32, row : Int32, col : Int32) : Window
   fun start_color : Int32
   fun has_colors : Bool

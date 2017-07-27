@@ -169,16 +169,16 @@ module NCurses
     @@initialized = false
   end
 
-  def ncurses_bits(mask, shift)
+  def color_pair(n)
+    ncurses_bits(n, 0) & a_color
+  end
+
+  private def ncurses_bits(mask, shift)
     mask << (shift + NCURSES_ATTR_SHIFT)
   end
 
-  def a_color
+  private def a_color
     ncurses_bits((1_u32 << 8) - 1, 0)
-  end
-
-  def color_pair(n)
-    ncurses_bits(n, 0) & a_color
   end
 
   extend self
