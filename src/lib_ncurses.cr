@@ -8,25 +8,25 @@ lib LibNCurses
 
   enum Attribute
     NORMAL     = 1_u32 - 1_u32
-    ATTRIBUTES = 1_u32                      << ( 0_u32 + ATTR_SHIFT)
-    CHARTEXT   = (1_u32                     << ( 0_u32 + ATTR_SHIFT)) - 1_u32
-    COLOR      = ((1_u32 << 8_u32) - 1_u32) << ( 0_u32 + ATTR_SHIFT)
-    STANDOUT   = 1_u32                      << ( 8_u32 + ATTR_SHIFT)
-    UNDERLINE  = 1_u32                      << ( 9_u32 + ATTR_SHIFT)
-    REVERSE    = 1_u32                      << (10_u32 + ATTR_SHIFT)
-    BLINK      = 1_u32                      << (11_u32 + ATTR_SHIFT)
-    DIM        = 1_u32                      << (12_u32 + ATTR_SHIFT)
-    BOLD       = 1_u32                      << (13_u32 + ATTR_SHIFT)
-    ALTCHARSET = 1_u32                      << (14_u32 + ATTR_SHIFT)
-    INVIS      = 1_u32                      << (15_u32 + ATTR_SHIFT)
-    PROTECT    = 1_u32                      << (16_u32 + ATTR_SHIFT)
-    HORIZONTAL = 1_u32                      << (17_u32 + ATTR_SHIFT)
-    LEFT       = 1_u32                      << (18_u32 + ATTR_SHIFT)
-    LOW        = 1_u32                      << (19_u32 + ATTR_SHIFT)
-    RIGHT      = 1_u32                      << (20_u32 + ATTR_SHIFT)
-    TOP        = 1_u32                      << (21_u32 + ATTR_SHIFT)
-    VERTICAL   = 1_u32                      << (22_u32 + ATTR_SHIFT)
-    ITALIC     = 1_u32                      << (23_u32 + ATTR_SHIFT)
+    ATTRIBUTES = 1_u32 << (0_u32 + ATTR_SHIFT)
+    CHARTEXT   = (1_u32 << (0_u32 + ATTR_SHIFT)) - 1_u32
+    COLOR      = ((1_u32 << 8_u32) - 1_u32) << (0_u32 + ATTR_SHIFT)
+    STANDOUT   = 1_u32 << (8_u32 + ATTR_SHIFT)
+    UNDERLINE  = 1_u32 << (9_u32 + ATTR_SHIFT)
+    REVERSE    = 1_u32 << (10_u32 + ATTR_SHIFT)
+    BLINK      = 1_u32 << (11_u32 + ATTR_SHIFT)
+    DIM        = 1_u32 << (12_u32 + ATTR_SHIFT)
+    BOLD       = 1_u32 << (13_u32 + ATTR_SHIFT)
+    ALTCHARSET = 1_u32 << (14_u32 + ATTR_SHIFT)
+    INVIS      = 1_u32 << (15_u32 + ATTR_SHIFT)
+    PROTECT    = 1_u32 << (16_u32 + ATTR_SHIFT)
+    HORIZONTAL = 1_u32 << (17_u32 + ATTR_SHIFT)
+    LEFT       = 1_u32 << (18_u32 + ATTR_SHIFT)
+    LOW        = 1_u32 << (19_u32 + ATTR_SHIFT)
+    RIGHT      = 1_u32 << (20_u32 + ATTR_SHIFT)
+    TOP        = 1_u32 << (21_u32 + ATTR_SHIFT)
+    VERTICAL   = 1_u32 << (22_u32 + ATTR_SHIFT)
+    ITALIC     = 1_u32 << (23_u32 + ATTR_SHIFT)
   end
 
   enum Key
@@ -68,6 +68,7 @@ lib LibNCurses
   fun notimeout(window : Window, value : Bool)
   fun nodelay(window : Window, value : Bool)
   fun wclear(window : Window)
+  fun wbkgd(window : Window, slot : Int16)
   fun newwin(height : Int32, width : Int32, row : Int32, col : Int32) : Window
   fun start_color : Int32
   fun has_colors : Bool

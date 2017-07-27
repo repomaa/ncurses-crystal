@@ -6,6 +6,7 @@ lib Locale
   LC_CTYPE = 0
   fun setlocale(category : Int32, locale : LibC::Char*) : LibC::Char*
 end
+
 Locale.setlocale(Locale::LC_CTYPE, "")
 
 module NCurses
@@ -13,7 +14,7 @@ module NCurses
 
   # Possible integer result values
   ERR = -1
-  OK  = 0
+  OK  =  0
 
   # Default colors
   BLACK   = 0
@@ -24,6 +25,8 @@ module NCurses
   MAGENTA = 5
   CYAN    = 6
   WHITE   = 7
+
+  NCURSES_ATTR_SHIFT = 8
 
   class Window
     def initialize(@window : LibNCurses::Window)
@@ -164,6 +167,18 @@ module NCurses
     return unless @@initialized
     LibNCurses.endwin
     @@initialized = false
+  end
+
+  def ncurses_bits(mask, shift)
+    mask << (shift + NCURSES_ATTR_SHIFT)
+  end
+
+  def a_color
+    ncurses_bits((1_u32 << 8) - 1, 0)
+  end
+
+  def color_pair(n)
+    ncurses_bits(n, 0) & a_color
   end
 
   extend self
