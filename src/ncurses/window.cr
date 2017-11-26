@@ -17,7 +17,7 @@ module NCurses
       {LibNCurses.getmaxy(self), LibNCurses.getmaxx(self)}
     end
 
-    private macro def attr_mask(*attributes) : LibNCurses::Attribute
+    private macro attr_mask(*attributes)
       {% begin %}
       mask = LibNCurses::Attribute::NORMAL
 
