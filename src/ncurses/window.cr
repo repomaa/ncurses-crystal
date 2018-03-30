@@ -13,16 +13,16 @@ module NCurses
       initialize(LibNCurses.newwin(height || max_height, width || max_width, y, x))
     end
 
-    def get_max_x
+    def max_x
       LibNCurses.getmaxx(self)
     end
 
-    def get_max_y
+    def max_y
       LibNCurses.getmaxy(self)
     end
 
     def max_dimensions
-      {get_max_y, get_max_x}
+      {x: max_x, y: max_y}
     end
 
     private macro attr_mask(*attributes)
