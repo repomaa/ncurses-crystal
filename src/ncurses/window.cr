@@ -9,7 +9,7 @@ module NCurses
     ]
 
     def initialize(height = nil, width = nil, y = 0, x = 0)
-      max_height, max_width = NCurses.stdscr.max_dimensions
+      max_height, max_width = NCurses.stdscr.max_x, NCurses.stdscr.max_y
       initialize(LibNCurses.newwin(height || max_height, width || max_width, y, x))
     end
 
